@@ -16,11 +16,11 @@ pipeline {
                 echo("you are ${params.age} years old");
             }
         }
-    stage("Show serer time"){
+    stage("Show server time"){
     steps{
     scripts{
-    showservertime();
-    showservertime("Message from ${my_epic_name}");
+    showServerTime();
+    showServerTime("Message from ${my_epic_name}");
 
     }
     }
