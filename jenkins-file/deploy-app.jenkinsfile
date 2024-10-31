@@ -17,6 +17,7 @@ pipeline{
   cleanWs();
   // read pipeline configuration
   DeploymentConfigs.jobInstance = this;
+  DeploymentConfigs.loadGlobalConfigs();
   }
   }
   }
