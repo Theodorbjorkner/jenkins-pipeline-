@@ -18,6 +18,10 @@ pipeline{
   // read pipeline configuration
   DeploymentConfigs.jobInstance = this;
   DeploymentConfigs.loadGlobalConfigs();
+
+  // Set initial environment variables
+  sh("env"); // TODO remove it after debug
+
   }
   }
   }
