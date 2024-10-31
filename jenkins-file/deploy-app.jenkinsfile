@@ -20,6 +20,7 @@ pipeline{
   DeploymentConfigs.loadGlobalConfigs();
 
   // Set initial environment variables
+  readPipielineName();
   sh("env"); // TODO remove it after debug
 
   }
