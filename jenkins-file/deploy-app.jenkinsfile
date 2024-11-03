@@ -48,7 +48,7 @@ pipeline{
   timeout(time:10, unit: "SECONDS");
   }
   steps {
-  scipt{
+  script{
   cicdProjectConfigMap = readCicdProjectConfig();
   echo("cicdProjectConfigMap:\n" + writeYaml( data: cicdProjectConfigMap, returnText: true));
 
