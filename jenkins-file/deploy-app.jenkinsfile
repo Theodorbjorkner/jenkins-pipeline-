@@ -1,4 +1,4 @@
-@Library(value="pipeline-shared-lib", changelog=false) _
+@Library(value="pipeline-shared-lib@main", changelog=false) _
 import cicd.config.DeploymentConfigs;
 pipeline{
   agent any
