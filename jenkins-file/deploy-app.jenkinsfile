@@ -68,8 +68,7 @@ pipeline{
       sh("ls -la node_modules"); // todo remove after debug
       }
      }
-
-  }
+    }
   }
   post {
     always {
