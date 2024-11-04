@@ -4,12 +4,20 @@ import cicd.config.DeploymentConfigs;
 
 pipeline{
   agent any
+  tools {nodejs "Node-JS"}
   options{
   timeout(activity: true, time: 5, unit: 'MINUTES');
   skipDefaultCheckout(true);
   timestamps();
   }
+
   stages{
+  stage("example"){
+  steps {
+  sh 'npm config ls'
+  }
+  }
+
   stage("init"){
   options{
   timeout(time: 5, unit: 'MINUTES');
