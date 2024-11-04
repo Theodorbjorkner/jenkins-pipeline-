@@ -74,6 +74,16 @@ pipeline{
       }
      }
     }
+    stage("Run unit test"){
+    options{
+         timeout(time: 1, unit: 'MINUTES');
+         }
+     steps{
+     script{
+     runUnitTests();
+     }
+     }
+    }
   }
   post {
     always {
