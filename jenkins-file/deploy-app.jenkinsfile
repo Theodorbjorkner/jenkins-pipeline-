@@ -7,6 +7,7 @@ pipeline{
   options{
   timeout(activity: true, time: 5, unit: 'MINUTES');
   skipDefaultCheckout(true);
+  timestamps();
   }
   stages{
   stage("init"){
