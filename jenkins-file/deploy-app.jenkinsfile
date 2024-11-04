@@ -1,6 +1,6 @@
 @Library(value="pipeline-shared-lib@main", changelog=false) _
 import cicd.config.DeploymentConfigs;
- Map cicdProjectConfigMap;
+ Map cicdProjectConfigMap = null;
 
 pipeline{
   agent any
