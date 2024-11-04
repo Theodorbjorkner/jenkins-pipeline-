@@ -70,10 +70,7 @@ pipeline{
      }
      steps{
       script{
-      sh("ls -la"); // todo remove after debug
       installDependencies();
-      sh("ls -la"); // todo remove after debug
-      sh("ls -la node_modules"); // todo remove after debug
       }
      }
     }
