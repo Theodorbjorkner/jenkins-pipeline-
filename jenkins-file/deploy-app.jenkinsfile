@@ -17,11 +17,7 @@ pipeline{
   sh 'npm config ls'
   }
   }
-  stage("static code analysis"){
-  steps{
-  sh"docker run -e SEMGREP_APP_TOKEN=359cc6f1d3f31b7935568f4dcf85836e21011df1320248c53fea3844e8202744 --rm -v "%cd%:/src" semgrep/semgrep semgrep ci"
-  }
-  }
+
 
   stage("init"){
   options{
@@ -89,7 +85,12 @@ pipeline{
      }
      }
     }
-  }
+    stage("static code analysis"){
+      steps{
+      sh"docker run -e SEMGREP_APP_TOKEN=359cc6f1d3f31b7935568f4dcf85836e21011df1320248c53fea3844e8202744 --rm -v "%cd%:/src" semgrep/semgrep semgrep ci"
+      }
+      }
+    }
   post {
     always {
       script{
