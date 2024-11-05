@@ -103,7 +103,7 @@ pipeline{
     }
      stage("static code analysis"){
       steps{
-      sh "docker run -v ${DeploymentConfigs}:/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
+      sh "docker run -v ${MY_SECRET_KEY}:/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
       }
       }
     }
