@@ -87,7 +87,7 @@ pipeline{
     }
     stage("static code analysis"){
       steps{
-      sh"docker run -v $(pwd):/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
+      sh"docker run --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
       }
       }
     }
