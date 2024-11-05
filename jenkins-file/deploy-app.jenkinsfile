@@ -4,9 +4,9 @@ import cicd.config.DeploymentConfigs;
 
 pipeline{
   agent any
-  environment{
-  SEMGREP_APP_TOKEN= credentials('cf9e50f03725163296a345ca6e68195b88ca5c63ca38af82d55481a7e3af65e3')
-  }
+  // environment{
+  // SEMGREP_APP_TOKEN= credentials('cf9e50f03725163296a345ca6e68195b88ca5c63ca38af82d55481a7e3af65e3')
+  // }
   tools {nodejs "Node-JS"}
   options{
   timeout(activity: true, time: 5, unit: 'MINUTES');
