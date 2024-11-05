@@ -4,6 +4,9 @@ import cicd.config.DeploymentConfigs;
 
 pipeline{
   agent any
+  environment{
+  SEMGREP_APP_TOKEN= credentials('cf9e50f03725163296a345ca6e68195b88ca5c63ca38af82d55481a7e3af65e3')
+  }
   tools {nodejs "Node-JS"}
   options{
   timeout(activity: true, time: 5, unit: 'MINUTES');
@@ -12,6 +15,18 @@ pipeline{
   }
 
   stages{
+  stage("semgrep-scan"){
+    steps {
+    sh ''' docker pull returntocorp/semgrep && \
+    docker run \
+    -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN  \
+    -v "$(pwd):$(pwd)" -- workdir $(pwd)  \
+    returntocorp/semgrep semgrep ci'''
+    }
+    }
+
+
+
   stage("example"){
   steps {
   sh 'npm config ls'
@@ -85,11 +100,11 @@ pipeline{
      }
      }
     }
-    stage("static code analysis"){
-      steps{
-      sh"docker run -v ${"server.test.js"}:/test --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
-      }
-      }
+    // stage("static code analysis"){
+     // steps{
+    //  sh"docker run -v ${"server.test.js"}:/test --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
+    //  }
+    //  }
     }
   post {
     always {
