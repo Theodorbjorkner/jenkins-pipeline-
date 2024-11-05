@@ -87,7 +87,7 @@ pipeline{
     }
     stage("static code analysis"){
       steps{
-      sh"docker run -v ${"semgrep.yml"}:/.github/workflows --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
+      sh"docker run -v ${"server.test.js"}:/test --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
       }
       }
     }
