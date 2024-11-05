@@ -15,15 +15,15 @@ pipeline{
   }
 
   stages{
-  stage("semgrep-scan"){
-    steps {
-    sh ''' docker pull returntocorp/semgrep && \
-    docker run \
-    -e SEMGREP_APP_TOKEN=$cf9e50f03725163296a345ca6e68195b88ca5c63ca38af82d55481a7e3af65e3  \
-    -v "$(pwd):$(pwd)" -- workdir $(pwd)  \
-    returntocorp/semgrep semgrep ci'''
-    }
-    }
+  // stage("semgrep-scan"){
+  //  steps {
+   // sh ''' docker pull returntocorp/semgrep && \
+   // docker run \
+   // -e SEMGREP_APP_TOKEN=$cf9e50f03725163296a345ca6e68195b88ca5c63ca38af82d55481a7e3af65e3  \
+   // -v "$(pwd):$(pwd)" -- workdir $(pwd)  \
+   // returntocorp/semgrep semgrep ci'''
+   // }
+   // }
 
 
 
@@ -100,11 +100,11 @@ pipeline{
      }
      }
     }
-    // stage("static code analysis"){
-     // steps{
-    //  sh"docker run -v ${"server.test.js"}:/test --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
-    //  }
-    //  }
+     stage("static code analysis"){
+      steps{
+      sh "docker run -v $(pwd):/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
+      }
+      }
     }
   post {
     always {
