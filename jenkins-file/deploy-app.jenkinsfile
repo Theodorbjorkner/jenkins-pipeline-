@@ -101,11 +101,11 @@ pipeline{
      }
      }
     }
-     // stage("static code analysis"){
-      // steps{
-      // sh "docker run -v ${jenkins-pipeline-}:/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci"
-     // }
-     // }
+      stage("static code analysis"){
+       steps{
+       sh "docker run -v $(pwd):/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config auto"
+      }
+      }
      }
   post {
     always {
